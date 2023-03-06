@@ -1,0 +1,18 @@
+version: '3'
+services:
+  rslidar_sdk:
+    stdin_open: true
+    tty: true
+    image: rslidar_sdk:noetic
+    # command: tail -f /dev/null
+    # command: bin/zsh -c "roslaunch rslidar_sdk corriere_start.launch"
+    command: bin/zsh -c "roslaunch rslidar_sdk replay_rosbag.launch"
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    
+    network_mode: host
+
+    # user: "${UID}:${GID}"
+    # volumes:
+      # - $HOME/repo/rslidar_sdk:/home/user/catkin_ws/src/rslidar_sdk
