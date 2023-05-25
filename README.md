@@ -1,5 +1,26 @@
 # 1 **rslidar_sdk**
 
+## NTU Installation
+
+**To install the rslidar_driver onto Corriere robot:**  
+1) Run `docker build -t rslidar_sdk:noetic -f docker/Dockerfile .`
+2) Save the image on your computer to be exported onto corriere  
+`docker save rslidar_sdk:noetic > rslidar_sdk_noetic.tar`  
+3) Transfer the `rslidar_sdk_noetic.tar` file, as well as the whole `rslidar_ntu_sdk` folder, onto corriere through scp/rsync/USB drive
+4) Run `docker load < rslidar_sdk_noetic.tar`
+5) Put `rslidar_ntu_sdk` folder in `/home/bumblebee/docker` folder, else change the `run.sh` to mount a different folder path
+5) Run `./run.sh` to run the driver, advised to stop the old rslidar driver on corriere before running this. `docker stop lidar_driver`
+
+*To change the output pointcloud topic, edit the `config/corriere_config.yaml`*
+
+**Changes made to original rslidar_sdk:**  
+* Added Dockerfile for building driver into container for deployment on Corriere Robot
+* Changed point type in CMakeLists.txt from XYZIR to XYZIRT  
+`Line8: set(POINT_TYPE XYZIRT)`  
+This is to allow per-point timestamping in the output pointcloud by rslidar
+* Added corriere robot specific launch file and config file  
+
+
  [中文介绍](README_CN.md) 
 
 
