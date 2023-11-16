@@ -20,6 +20,9 @@
 This is to allow per-point timestamping in the output pointcloud by rslidar
 * Added corriere robot specific launch file and config file  
 
+**Note: RESOLUTION of the old version Lidar should be set as 0.01**
+refer to `https://github.com/RoboSense-LiDAR/rs_driver/issues/10`
+
 
  [中文介绍](README_CN.md) 
 
