@@ -1,15 +1,16 @@
 # 1 **rslidar_sdk**
 
+**Note: RESOLUTION of the old version Lidar should be set as 0.01**
+refer to `https://github.com/RoboSense-LiDAR/rs_driver/issues/10`
+
+**This version modifies the Dockerfile and updates the resolution to 0.01 in the driver.**
+
+
 ## NTU Installation
 
 **To install the rslidar_driver onto Corriere robot:**  
 1) Run `docker build -t rslidar_sdk:noetic -f docker/Dockerfile .`
-2) Save the image on your computer to be exported onto corriere  
-`docker save rslidar_sdk:noetic > rslidar_sdk_noetic.tar`  
-3) Transfer the `rslidar_sdk_noetic.tar` file, as well as the whole `rslidar_ntu_sdk` folder, onto corriere through scp/rsync/USB drive
-4) Run `docker load < rslidar_sdk_noetic.tar`
-5) Put `rslidar_ntu_sdk` folder in `/home/bumblebee/docker` folder, else change the `run.sh` to mount a different folder path
-5) Run `./run.sh` to run the driver, advised to stop the old rslidar driver on corriere before running this. `docker stop lidar_driver`
+2) Run `./run.sh` to run the driver, advised to stop the old rslidar driver on corriere before running this. `docker stop lidar_driver`
 
 *To change the output pointcloud topic, edit the `config/corriere_config.yaml`*
 
@@ -20,8 +21,6 @@
 This is to allow per-point timestamping in the output pointcloud by rslidar
 * Added corriere robot specific launch file and config file  
 
-**Note: RESOLUTION of the old version Lidar should be set as 0.01**
-refer to `https://github.com/RoboSense-LiDAR/rs_driver/issues/10`
 
 
  [中文介绍](README_CN.md) 
